@@ -10,21 +10,19 @@ import java.util.*;
  * @author: PLACE YOUR NAME HERE
  *
  */
-public class StudentManager
-{
+public class StudentManager {
 
     /**
      * TASK 1.1 - Change this data structure to fit a better one.
      */
-    private String[] students;
+    private ArrayList<String> students;
 
     /**
      * TASK 1.2 - Constructs a new instance of the StudentManager class.
      * Initializes the students list as an Array. Change this as well.
      */
-    public StudentManager()
-    {
-        students = new String[0];
+    public StudentManager() {
+        students = new ArrayList<String>();
     }
 
     /**
@@ -34,9 +32,8 @@ public class StudentManager
      *
      * @return The data structure as a copy will be returned.
      */
-    public String[] getStudents()
-    {
-        return students;
+    public ArrayList<String> getStudents() {
+        return this.students;
     }
 
     /**
@@ -45,10 +42,12 @@ public class StudentManager
      *
      * @return the number of students currently in the list
      */
-    public int countStudents()
-    {
+    public int countStudents() {
         // Make your change here. Hence, you got to change the return value!
-        return -1;
+        if (this.students.isEmpty()) {
+            return -1;
+        }
+        return this.students.size();
     }
 
     /**
@@ -58,9 +57,17 @@ public class StudentManager
      *
      * @param studentName the name of the student to add
      */
-    public void addStudent(String studentName)
-    {
-        // Make your change here
-    }
 
+    public void addStudent(String studentName) {
+        if (studentName == null || studentName.trim().isEmpty()) {
+            System.out.println("Invalid student name. Cannot be null or empty.");
+            return;
+        }
+        boolean added = this.students.add(studentName); // Add the student to the set
+        if (added) {
+            System.out.println("Student added successfully: " + studentName);
+        } else {
+            System.out.println("Student already exists: " + studentName);
+        }
+    }
 }
